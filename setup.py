@@ -9,5 +9,5 @@ setup(
   description="doctran",
   long_description="doctran",
   packages=find_packages(),
-  install_requires=requirements_from_file('requirements.txt'),
+  install_requires=[],
 )
