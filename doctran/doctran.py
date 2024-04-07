@@ -172,7 +172,8 @@ class Doctran:
         self.config = DoctranConfig(
             openai_model=openai_model,
             openai=openai,
-            openai_token_limit=openai_token_limit
+            openai_token_limit=openai_token_limit,
+            openai_deployment_id=openai_deployment_id
         )
         if openai_api_key:
             self.config.openai.api_key = openai_api_key
@@ -181,11 +182,8 @@ class Doctran:
         else:
             raise Exception("No OpenAI API Key provided")
 
-        if openai_deployment_id:
-            self.config.openai_deployment_id = openai_deployment_id
-        elif os.environ.get("OPENAI_DEPLOYMENT_ID"):
+        if os.environ.get("OPENAI_DEPLOYMENT_ID"):
             self.config.openai_deployment_id = os.environ["OPENAI_DEPLOYMENT_ID"]
-
         if os.environ.get('OPENAI_API_TYPE'):
             self.config.openai.api_type = os.environ['OPENAI_API_TYPE']
         if os.environ.get('OPENAI_API_BASE'):
